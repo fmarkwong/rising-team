@@ -1,6 +1,6 @@
 class QuestionData
-  QUESTIONS = (1..4).to_a
-  QUESTIONS_BACKUP = [ 
+  # QUESTIONS = (1..4).to_a
+  QUESTIONS = [ 
     "What’s the best thing you’ve got going on in your life at the moment?",
     "What incredibly common thing have you never done?",
     "What has taken you the longest to get good or decent at?",
