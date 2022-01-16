@@ -1,24 +1,21 @@
 require "timeout"
-require 'io/console'
 require_relative "question_data"
+require_relative "question_io"
 
-def ask_a_question(question)
-  puts
-  puts "My questions is:"
-  puts "====================="
-  puts question
-  puts
+
+def ask_next_question(questions)
+  QuestionIO.print_question(questions.get_next)
 end
 
 def ask_many_questions(questions)
   input = ""
   loop do
-    ask_a_question(questions.get_next)
+    ask_next_question(questions)
     puts "Press any key to stop"
 
     begin 
       Timeout::timeout 1 do
-        input = STDIN.getch
+        input = QuestionIO.get_user_input 
       end
     rescue Timeout::Error
       input = "none"
@@ -35,13 +32,14 @@ loop do
   puts "a: Ask one question"
   puts "b: Ask many questions"
   puts "c: Quit"
-  input = STDIN.getch
+
+  input = QuestionIO.get_user_input 
 
   if input == 'a' 
-    ask_a_question(questions.get_next)
+    ask_next_question(questions)
   elsif input == 'b'
     ask_many_questions(questions)
-  elsif input == 'c' || input == "\u0003"
+  elsif input == 'c' || input == "\u0003" # ctrl C
     exit(1)
   else
     puts
