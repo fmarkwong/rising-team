@@ -1,15 +1,19 @@
 require_relative "question_io"
 
 class QuestionEngine
-  def self.ask_next_question(questions)
-    QuestionIO.print_question(questions.get_next)
+  def initialize(questions)
+    @questions = questions
   end
 
-  def self.ask_many_questions(questions)
-    input = ''
+  def ask_next_question
+    QuestionIO.print_question(@questions.get_next)
+  end
 
-    while input.empty? do
-      ask_next_question(questions)
+  def ask_many_questions
+    input = nil
+
+    while input.nil? do
+      ask_next_question
       puts "Press any key to stop"
 
       begin 

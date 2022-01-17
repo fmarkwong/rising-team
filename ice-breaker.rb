@@ -10,16 +10,16 @@ def print_prompt
   puts "c: Quit"
 end
 
-questions = QuestionData.new
+question_engine = QuestionEngine.new(QuestionData.new)
 
 #main loop
 loop do
   print_prompt
 
   case QuestionIO.get_user_input
-  when 'a' then QuestionEngine.ask_next_question(questions)
-  when 'b' then QuestionEngine.ask_many_questions(questions)
-  when 'c', "\u0003" then exit(1) # c or ctrl c
+  when 'a' then question_engine.ask_next_question
+  when 'b' then question_engine.ask_many_questions
+  when 'c', "\u0003" then exit(1) # c or ctrl-c
   else
     puts "\nPlease enter 'a', 'b', or 'c'" 
   end
