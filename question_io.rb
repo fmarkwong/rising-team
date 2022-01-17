@@ -2,9 +2,8 @@ require 'io/console'
 
 class QuestionIO
   def self.print_question(question)
-    puts
-    puts "My questions is:"
-    puts "====================="
+    puts "My question is:"
+    puts "==============="
     puts question
     puts
   end
