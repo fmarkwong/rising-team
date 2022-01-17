@@ -1,11 +1,12 @@
 class QuestionData
-  def initialize(data)
-    @original_data = data
-    @questions = data.shuffle
+  def initialize(question_data)
+    @original_data = question_data
+    @original_data.freeze
+    @questions_stack = @original_data.shuffle
   end
 
   def get_next
-    @questions = @original_data.shuffle if @questions.empty?
-    @questions.pop
+    @questions_stack = @original_data.shuffle if @questions_stack.empty?
+    @questions_stack.pop
   end
 end
