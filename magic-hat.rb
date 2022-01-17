@@ -1,8 +1,9 @@
+require "timeout"
 require_relative "question_io"
 require_relative "question_data"
 require_relative "question_engine"
 
-question_data = QuestionData.new(File.readlines('questions_data.txt')) 
+question_data = QuestionData.new(File.readlines('questions_data.txt'))
 question_engine = QuestionEngine.new(question_data)
 
 #main loop
